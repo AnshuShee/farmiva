@@ -112,10 +112,10 @@ function Home() {
               <div className="p-5 flex flex-col flex-grow">
                 <h3 className="font-body-lg text-body-lg font-semibold text-on-surface mb-1">Russet Potatoes</h3>
                 <p className="font-caption text-caption text-on-surface-variant mb-4 flex items-center gap-1">
-                  <span className="material-symbols-outlined text-xs">location_on</span> Valley Farms, 12mi
+                  <span className="material-symbols-outlined text-xs">location_on</span> Nashik Orchards, 12km
                 </p>
                 <div className="mt-auto flex items-center justify-between">
-                  <span className="font-h3 text-h3 text-on-surface">$4.50<span className="font-caption text-caption text-on-surface-variant font-normal">/lb</span></span>
+                  <span className="font-h3 text-h3 text-on-surface">₹45<span className="font-caption text-caption text-on-surface-variant font-normal">/kg</span></span>
                   <button className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container hover:bg-primary-container hover:text-on-primary transition-colors duration-200">
                     <span className="material-symbols-outlined">add_shopping_cart</span>
                   </button>
@@ -134,10 +134,10 @@ function Home() {
               <div className="p-5 flex flex-col flex-grow">
                 <h3 className="font-body-lg text-body-lg font-semibold text-on-surface mb-1">Heirloom Carrots</h3>
                 <p className="font-caption text-caption text-on-surface-variant mb-4 flex items-center gap-1">
-                  <span className="material-symbols-outlined text-xs">location_on</span> Oak Ridge, 8mi
+                  <span className="material-symbols-outlined text-xs">location_on</span> Munnar Hill Farms, 8km
                 </p>
                 <div className="mt-auto flex items-center justify-between">
-                  <span className="font-h3 text-h3 text-on-surface">$3.20<span className="font-caption text-caption text-on-surface-variant font-normal">/bunch</span></span>
+                  <span className="font-h3 text-h3 text-on-surface">₹30<span className="font-caption text-caption text-on-surface-variant font-normal">/bunch</span></span>
                   <button className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container hover:bg-primary-container hover:text-on-primary transition-colors duration-200">
                     <span className="material-symbols-outlined">add_shopping_cart</span>
                   </button>
@@ -156,10 +156,10 @@ function Home() {
               <div className="p-5 flex flex-col flex-grow">
                 <h3 className="font-body-lg text-body-lg font-semibold text-on-surface mb-1">Vine Tomatoes</h3>
                 <p className="font-caption text-caption text-on-surface-variant mb-4 flex items-center gap-1">
-                  <span className="material-symbols-outlined text-xs">location_on</span> Sunrise Co-op, 5mi
+                  <span className="material-symbols-outlined text-xs">location_on</span> Punjab Wheat Belt, 5km
                 </p>
                 <div className="mt-auto flex items-center justify-between">
-                  <span className="font-h3 text-h3 text-on-surface">$5.50<span className="font-caption text-caption text-on-surface-variant font-normal">/lb</span></span>
+                  <span className="font-h3 text-h3 text-on-surface">₹60<span className="font-caption text-caption text-on-surface-variant font-normal">/kg</span></span>
                   <button className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container hover:bg-primary-container hover:text-on-primary transition-colors duration-200">
                     <span className="material-symbols-outlined">add_shopping_cart</span>
                   </button>
@@ -178,10 +178,10 @@ function Home() {
               <div className="p-5 flex flex-col flex-grow">
                 <h3 className="font-body-lg text-body-lg font-semibold text-on-surface mb-1">Organic Lacinato Kale</h3>
                 <p className="font-caption text-caption text-on-surface-variant mb-4 flex items-center gap-1">
-                  <span className="material-symbols-outlined text-xs">location_on</span> Green Acres, 15mi
+                  <span className="material-symbols-outlined text-xs">location_on</span> Ooty Organic Hub, 15km
                 </p>
                 <div className="mt-auto flex items-center justify-between">
-                  <span className="font-h3 text-h3 text-on-surface">$4.00<span className="font-caption text-caption text-on-surface-variant font-normal">/bunch</span></span>
+                  <span className="font-h3 text-h3 text-on-surface">₹40<span className="font-caption text-caption text-on-surface-variant font-normal">/bunch</span></span>
                   <button className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container hover:bg-primary-container hover:text-on-primary transition-colors duration-200">
                     <span className="material-symbols-outlined">add_shopping_cart</span>
                   </button>
@@ -204,7 +204,7 @@ function Home() {
                   <span className="material-symbols-outlined text-4xl">search</span>
                 </div>
                 <h3 className="font-h3 text-xl mb-2 text-on-surface">Browse Local</h3>
-                <p className="font-body-md text-body-md text-on-surface-variant max-w-[320px] text-center">Discover seasonal produce from vetted farms within a 50-mile radius.</p>
+                <p className="font-body-md text-body-md text-on-surface-variant max-w-[320px] text-center">Discover seasonal produce from vetted farms within an 80-km radius.</p>
               </div>
               {/* Step 2 */}
               <div className="flex-1 flex flex-col items-center z-10 relative">
