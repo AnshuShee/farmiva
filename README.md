@@ -253,11 +253,9 @@ The following screens make up the full Farmiva web application:
 
 - [x] Product Requirements Document (PRD)
 - [x] UI/UX Prompt (Stitch AI ready — 19 screens)
+- [x] Figma UI Screens  
+  👉 https://www.figma.com/design/Re9gukP9yHIOHcZhVwlwTW/Anshu?node-id=0-1&t=4q862lGVcKyF27fU-1
 - [ ] System architecture diagram
-- [ ] Figma UI screens
 - [ ] API design document
 - [ ] Working demo (Phase 1)
-
----
-
 *Farmiva — Fresh from land, delivered with care.*
