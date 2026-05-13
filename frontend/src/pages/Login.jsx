@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
+const ROLES = [
+  { key: 'customer', label: 'Customer', icon: 'person',       hint: 'Shop fresh produce' },
+  { key: 'farmer',   label: 'Farmer',   icon: 'agriculture',  hint: 'Manage your farm' },
+  { key: 'admin',    label: 'Admin',    icon: 'admin_panel_settings', hint: 'Platform control' },
+];
+
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const successMessage = location.state?.message;
+  const [selectedRole, setSelectedRole] = useState('customer');
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,18 +26,37 @@ function Login() {
     try {
       const response = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
+        const role = data.accountType || data.role || 'customer';
+
+        // Validate role matches selection
+        if (selectedRole !== 'customer' && role !== selectedRole) {
+          setError(`This account is not a ${selectedRole}. Please select the correct role.`);
+          setIsLoading(false);
+          return;
+        }
+
         localStorage.setItem('token', data.token);
         localStorage.setItem('userName', data.name);
-        navigate('/products');
+        localStorage.setItem('userRole', role);
+        localStorage.setItem('userId', data._id || data.id || '');
+
+        // Role-based redirect
+        if (role === 'admin') {
+          navigate('/admin');
+        } else if (role === 'farmer') {
+          navigate('/farmer/dashboard');
+        } else if (role === 'agent') {
+          navigate('/agent');
+        } else {
+          navigate('/products');
+        }
       } else {
         setError(data.message || 'Login failed');
       }
@@ -125,6 +151,34 @@ function Login() {
               <p className="text-sm md:text-[15px] text-[#6b7280]">Log in to your account</p>
             </div>
 
+            {/* Role Selector */}
+            <div className="mb-6">
+              <p className="text-[12px] font-bold text-[#6b7280] uppercase tracking-wider mb-3">Login as</p>
+              <div className="grid grid-cols-3 gap-2">
+                {ROLES.map(r => (
+                  <button
+                    key={r.key}
+                    type="button"
+                    onClick={() => { setSelectedRole(r.key); setError(''); }}
+                    className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border-2 transition-all text-center cursor-pointer
+                      ${selectedRole === r.key
+                        ? 'border-[#1e5631] bg-[#1e5631]/5 text-[#1e5631]'
+                        : 'border-[#e5e7eb] bg-white text-[#6b7280] hover:border-[#1e5631]/40 hover:bg-[#f9fafb]'
+                      }`}
+                  >
+                    <span
+                      className="material-symbols-outlined text-[22px]"
+                      style={{ fontVariationSettings: selectedRole === r.key ? "'FILL' 1" : "'FILL' 0" }}
+                    >
+                      {r.icon}
+                    </span>
+                    <span className="text-[12px] font-bold leading-tight">{r.label}</span>
+                    <span className="text-[10px] leading-tight opacity-70">{r.hint}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Form */}
             {successMessage && !error && (
               <div className="bg-green-50 text-green-600 p-3 rounded-lg text-sm font-medium border border-green-100 mb-4">
@@ -193,10 +247,20 @@ function Login() {
               {/* Submit Button */}
               <button 
                 disabled={isLoading}
-                className={`w-full text-white text-[15px] font-bold py-3.5 rounded-lg transition-all mt-4 shadow-sm ${isLoading ? 'bg-[#1e5631]/70 cursor-not-allowed' : 'bg-[#1e5631] hover:bg-[#1e5631]/90 active:scale-[0.98]'}`}
+                className={`w-full text-white text-[15px] font-bold py-3.5 rounded-lg transition-all mt-4 shadow-sm flex items-center justify-center gap-2 ${isLoading ? 'bg-[#1e5631]/70 cursor-not-allowed' : 'bg-[#1e5631] hover:bg-[#1e5631]/90 active:scale-[0.98]'}`}
                 type="submit"
               >
-                {isLoading ? 'Signing In...' : 'Sign In'}
+                {isLoading ? (
+                  <>
+                    <span className="material-symbols-outlined text-[18px] animate-spin">autorenew</span>
+                    Signing In...
+                  </>
+                ) : (
+                  <>
+                    <span className="material-symbols-outlined text-[18px]">login</span>
+                    Sign In as {ROLES.find(r => r.key === selectedRole)?.label}
+                  </>
+                )}
               </button>
             </form>
 
